@@ -14,9 +14,12 @@
   </section>
   <div class="container">
     <h1 style="color: #323485;">Genome Inspector</h1>
+    
     <label for="dnaSequence">Enter DNA Sequence:</label>
     <textarea id="dnaSequence" placeholder="e.g., ATGCGTACGTAGCTAGCTAGCGT"></textarea>
-    
+    <input type="file" id="fastaFile" accept=".fasta" />
+<button onclick="readFastaFile()">Upload FASTA</button>
+<div id="sequenceOutput"></div>
     <label for="analysisType">Select Analysis:</label>
     <select id="analysisType">
       <option value="analyzeAll">Analyze All</option>

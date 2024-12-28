@@ -1,3 +1,63 @@
+function readFastaFile() {
+  const fileInput = document.getElementById("fastaFile");
+  const outputDiv = document.getElementById("sequenceOutput");
+
+  if (!fileInput.files.length) {
+    outputDiv.textContent = "No file selected.";
+    return;
+  }
+
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(event) {
+    const content = event.target.result;
+    const sequence = parseFasta(content);
+
+    if (sequence) {
+      document.getElementById("dnaSequence").value = sequence;
+      outputDiv.textContent = "FASTA file read successfully. Sequence loaded!";
+    } else {
+      outputDiv.textContent = "Invalid FASTA file or no sequence found. Please ensure you enter only genomic FASTA file.";
+    }
+  };
+
+  reader.onerror = function() {
+    outputDiv.textContent = "Error reading file.";
+  };
+
+  reader.readAsText(file);
+}
+
+function parseFasta(content) {
+  const lines = content.split(/\r?\n/);
+  let sequence = "";
+
+  console.log("FASTA content:", content); // Log the file content
+  console.log("Parsed lines:", lines); // Log the lines array
+
+  lines.forEach(line => {
+    if (line.startsWith(">")) {
+      console.log("Header line:", line); // Log header lines
+    } else {
+      sequence += line.trim(); // Concatenate sequence lines
+      console.log("Sequence line added:", line.trim());
+    }
+  });
+
+  if (!sequence) {
+    console.log("No sequence found in file.");
+    return null;
+  }
+
+  const isValid = validateDNA(sequence);
+  console.log("Extracted sequence:", sequence);
+  console.log("Is sequence valid?:", isValid);
+
+  return isValid ? sequence : null;
+}
+
+
 function validateDNA(sequence) {
   return /^[ACGTacgt]+$/.test(sequence);
 }
