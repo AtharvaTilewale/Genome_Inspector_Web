@@ -9,10 +9,12 @@ function transcribeDNA(sequence) {
 
 function dnaComplement(sequence) {
   if (!validateDNA(sequence)) return "Invalid DNA sequence.";
-  return sequence.toUpperCase().replace(/A/g, "T")
-                                .replace(/T/g, "A")
-                                .replace(/C/g, "G")
-                                .replace(/G/g, "C");
+  const complementMap = { A: "T", T: "A", C: "G", G: "C" };
+  return sequence
+    .toUpperCase()
+    .split("")
+    .map(nucleotide => complementMap[nucleotide] || nucleotide)
+    .join("");
 }
 
 function reverseComplement(sequence) {
@@ -131,54 +133,71 @@ return results;
 }
 
 function performAnalysis() {
-const sequence = document.getElementById("dnaSequence").value.trim();
-const analysisType = document.getElementById("analysisType").value;
-let result = "";
+  const sequence = document.getElementById("dnaSequence").value.trim();
+  const analysisType = document.getElementById("analysisType").value;
 
-switch (analysisType) {
-  case "transcribe":
-    result = transcribeDNA(sequence);
-    break;
-  case "complement":
-    result = dnaComplement(sequence);
-    break;
-  case "reverseComplement":
-    result = reverseComplement(sequence);
-    break;
-  case "translate":
-    result = dnaToAminoAcid(sequence);
-    break;
-  case "translateReadingFrame":
-    result = translateReadingFrame(sequence);
-    break;
-  case "restrictionSites":
-    result = JSON.stringify(findRestrictionSites(sequence), null, 2);
-    break;
-  case "orf":
-    result = JSON.stringify(findORF(sequence), null, 2);
-    break;
-  case "gcContent":
-    result = gcContent(sequence);
-    break;
-  case "nucleotideFreq":
-    result = JSON.stringify(countNucleotideFrequency(sequence), null, 2);
-    break;
-  case "meltingTemp":
-    result = meltingTemperature(sequence);
-    break;
-  case "annealingTemp":
-    const primer = prompt("Enter primer sequence:");
-    result = annealingTemperature(sequence, primer);
-    break;
-  case "analyzeAll":
-    const allResults = analyzeAll(sequence);
-    result = Object.entries(allResults)
-      .map(([key, value]) => `${key}:\n${value}`)
-      .join("\n\n");
-    break;
-  default:
-    result = "Invalid analysis type selected.";
-}
+  // Check if the input sequence is empty
+  if (!sequence) {
+    document.getElementById("result").textContent = "No sequence entered.";
+    return;
+  }
 
-document.getElementById("result").textContent = result;
+  // Validate the sequence for invalid characters
+  if (!validateDNA(sequence)) {
+    document.getElementById("result").textContent = "Invalid character entered.";
+    return;
+  }
+
+  let result = "";
+
+  switch (analysisType) {
+    case "transcribe":
+      result = transcribeDNA(sequence);
+      break;
+    case "complement":
+      result = dnaComplement(sequence);
+      break;
+    case "reverseComplement":
+      result = reverseComplement(sequence);
+      break;
+    case "translate":
+      result = dnaToAminoAcid(sequence);
+      break;
+    case "translateReadingFrame":
+      result = translateReadingFrame(sequence);
+      break;
+    case "restrictionSites":
+      result = JSON.stringify(findRestrictionSites(sequence), null, 2);
+      break;
+    case "orf":
+      result = JSON.stringify(findORF(sequence), null, 2);
+      break;
+    case "gcContent":
+      result = gcContent(sequence);
+      break;
+    case "nucleotideFreq":
+      result = JSON.stringify(countNucleotideFrequency(sequence), null, 2);
+      break;
+    case "meltingTemp":
+      result = meltingTemperature(sequence);
+      break;
+    case "annealingTemp":
+      const primer = prompt("Enter primer sequence:");
+      if (!validateDNA(primer)) {
+        result = "Invalid primer sequence.";
+      } else {
+        result = annealingTemperature(sequence, primer);
+      }
+      break;
+    case "analyzeAll":
+      const allResults = analyzeAll(sequence);
+      result = Object.entries(allResults)
+        .map(([key, value]) => `${key}:\n${value}`)
+        .join("\n\n");
+      break;
+    default:
+      result = "Invalid analysis type selected.";
+  }
+
+  document.getElementById("result").textContent = result;
 }
