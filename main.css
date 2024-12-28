@@ -1,12 +1,40 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-    background-color: #071833;
+    background-color: #99bdf7;
     background-image: url(bgimage.png);
     background-attachment: fixed;
     background-size: auto;
     background-position: center center;
+    color: #263e89
   }
+  .ball1 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #ff005fbd;
+    box-shadow: inset 10px 10px 50px 0px #0000006e;
+    z-index: -99;
+    position: fixed;
+    top: -20%;
+    left: 10%;
+    padding: 50px;
+    margin: 3%;
+ }
+ 
+ .ball2 {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: #ff005fbd;
+    box-shadow: inset 10px 10px 50px 0px #0000006e;
+    z-index: -99;
+    position: fixed;
+    bottom: -20%;
+    right: 7%;
+    padding: 50px;
+    margin: 3%;
+ }
   .glowing-sphere {
     width: 300px;
     height: 300px;
@@ -33,7 +61,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: Arial, sans-serif;
-  color: white;
+  color: #323485;
   font-size: 1.5em;
 }
 
@@ -48,7 +76,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background: rgb(111 117 141 / 48%);
+    background: rgb(220 218 240 / 48%);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(9.0px)
@@ -78,7 +106,7 @@ body {
     height: 100px;
     margin: 10px 0px 10px;
     border: 2px solid #4914da70;
-    background-color: #ffffff92;
+    background-color: rgb(255 255 255 / 57%);
     border-radius: 10px;
     padding-top: 10px;
     font-family: monospace;
