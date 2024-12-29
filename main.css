@@ -119,23 +119,36 @@ body {
     color: #ce1515
   }
 
+  /* For modern browsers */
+.result::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+.result::-webkit-scrollbar-thumb {
+  background-color: white; /* Color of the scrollbar thumb */
+  border-radius: 5px; /* Rounded corners for the thumb */
+  border: 2px solid transparent; /* Optional: Adds space around the thumb */
+  background-clip: padding-box; /* Ensures the border doesn't overlap */
+}
+
+.result::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1); /* Color of the scrollbar track */
+  border-radius: 5px; /* Rounded corners for the track */
+}
+
   .result {
     margin-top: 20px;
-    display: block;
     padding: 10px;
-    background-color: rgb(255 255 255 / 50%);
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 5px;
-    white-space: pre-wrap;
-    /* width: 100%; Adjust as needed or use max-width */
-    /* max-width: 700px; Prevents the box from becoming too wide */  */
-    padding: 10px; /* Adds some space inside the box */
-    /* border: 1px solid #ccc; Optional: To define the boundary */
-    /* border-radius: 5px; /* Optional: For rounded corners */
-    /* background-color: #f9f9f9; Optional: Light background for better readability */
-    /* color: black; Default color */ */
-    word-wrap: break-word; /* Ensures long words break to fit the box */
-    overflow: auto; /* Hides overflow content */
-    white-space: pre-wrap; /* Preserves spaces and line breaks */
+    border: 1px solid #ccc; /* Optional for clarity */
+    white-space: pre-wrap; /* Ensures spaces and line breaks are preserved */
+    word-wrap: break-word; /* Forces long words to break onto the next line */
+    overflow-y: auto; /* Adds vertical scrollbar if content overflows */
+    max-height: 300px; /* Limits the height of the result box */
+    font-size: 14px; /* Ensures readability */
+    scrollbar-width: thin; /* Makes the scrollbar thinner */
+    scrollbar-color: white rgba(0, 0, 0, 0.1); /* Thumb and track colors */
   }
   .btn {
     display: inline-block;
@@ -164,4 +177,27 @@ body {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
+  }
+
+  .icon-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+  
+  .icon-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .icon-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
   }

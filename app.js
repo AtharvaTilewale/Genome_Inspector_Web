@@ -238,6 +238,11 @@ function performAnalysis() {
     return;
   }
 
+  if (!dnaSequence) {
+    displayResult("Please enter a valid DNA sequence!");
+    return;
+  }
+
   let result = "";
 
   switch (analysisType) {
@@ -290,4 +295,36 @@ function performAnalysis() {
   }
 
   document.getElementById("result").textContent = result;
+}
+
+function formatSequence(sequence, lineLength = 80) {
+  return sequence.match(new RegExp(`.{1,${lineLength}}`, 'g')).join('\n');
+}
+function displayResult(content) {
+  const resultElement = document.getElementById("result");
+  const saveButton = document.getElementById("saveButton");
+
+  if (content.trim()) {
+    resultElement.textContent = content; // Display the result
+    saveButton.style.display = "inline-block"; // Show the save button
+  } else {
+    resultElement.textContent = ""; // Clear the result
+    saveButton.style.display = "none"; // Hide the save button
+  }
+}
+
+function saveResultToFile() {
+  const resultElement = document.getElementById("result");
+  const resultText = resultElement.textContent || resultElement.innerText;
+
+  if (!resultText.trim()) {
+    alert("No result to save!");
+    return;
+  }
+
+  const blob = new Blob([resultText], { type: "text/plain" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "result.txt";
+  link.click();
 }
