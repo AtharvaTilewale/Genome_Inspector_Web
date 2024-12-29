@@ -81,6 +81,20 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(9.0px)
   }
+
+  input#fastaFile {
+    color: #393b80;
+  }
+
+  #uploadButton {
+    background: white;
+    border-radius: 7px;
+    padding: 4px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 1px solid blue;
+  }
+
   .result {
     margin-top: 20px;
     padding: 10px;

@@ -1,16 +1,29 @@
+function showFileName() {
+  const fileInput = document.getElementById('fastaFile');
+  const fileNameSpan = document.getElementById('fileName');
+
+  if (fileInput.files.length > 0) {
+    fileNameSpan.textContent = fileInput.files[0].name; // Display the file name
+  } else {
+    fileNameSpan.textContent = "No file selected"; // Reset if no file is selected
+  }
+}
 function readFastaFile() {
   const fileInput = document.getElementById("fastaFile");
   const outputDiv = document.getElementById("sequenceOutput");
+  const fileNameSpan = document.getElementById("fileName");
 
   if (!fileInput.files.length) {
-    outputDiv.textContent = "No file selected.";
+    fileNameSpan.textContent = "No file selected.";
+    outputDiv.textContent = "";
     return;
   }
 
   const file = fileInput.files[0];
+  fileNameSpan.textContent = file.name; // Display file name
   const reader = new FileReader();
 
-  reader.onload = function(event) {
+  reader.onload = function (event) {
     const content = event.target.result;
     const sequence = parseFasta(content);
 
@@ -18,11 +31,11 @@ function readFastaFile() {
       document.getElementById("dnaSequence").value = sequence;
       outputDiv.textContent = "FASTA file read successfully. Sequence loaded!";
     } else {
-      outputDiv.textContent = "Invalid FASTA file or no sequence found. Please ensure you enter only genomic FASTA file.";
+      outputDiv.textContent = "Invalid FASTA file or no sequence found. Please ensure you upload a valid genomic FASTA file.";
     }
   };
 
-  reader.onerror = function() {
+  reader.onerror = function () {
     outputDiv.textContent = "Error reading file.";
   };
 

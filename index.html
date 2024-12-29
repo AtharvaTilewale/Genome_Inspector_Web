@@ -15,10 +15,11 @@
   <div class="container">
     <h1 style="color: #323485;">Genome Inspector</h1>
     
-    <label for="dnaSequence">Enter DNA Sequence:</label>
+    <label for="dnaSequence">Enter/Upload DNA Sequence:</label>
     <textarea id="dnaSequence" placeholder="e.g., ATGCGTACGTAGCTAGCTAGCGT"></textarea>
-    <input type="file" id="fastaFile" accept=".fasta" />
-    <button onclick="readFastaFile()">Upload FASTA</button>
+    <input type="file" style="display:none" id="fastaFile" accept=".fasta" onchange="readFastaFile()" />
+    <button id="uploadButton" onclick="document.getElementById('fastaFile').click()">Upload FASTA file</button>
+    <span id="fileName" style="margin-left: 10px;">No file selected</span>
     <div id="sequenceOutput"></div>
     <br>
     <label for="analysisType">Select Analysis:</label>
