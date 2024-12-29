@@ -13,10 +13,10 @@
     <div class="ball2"></div>
   </section>
   <div class="container">
-    <h1 style="color: #323485;">Genome Inspector</h1>
+    <h1 style="color: #323485; font-family: serif;">Genome Inspector</h1>
     
     <label for="dnaSequence">Enter/Upload DNA Sequence:</label>
-    <textarea id="dnaSequence" placeholder="e.g., ATGCGTACGTAGCTAGCTAGCGT"></textarea>
+    <textarea id="dnaSequence" placeholder=" e.g., ATGCGTACGTAGCTAGCTAGCGT"></textarea>
     <input type="file" style="display:none" id="fastaFile" accept=".fasta" onchange="readFastaFile()" />
     <button id="uploadButton" onclick="document.getElementById('fastaFile').click()">Upload FASTA file</button>
     <span id="fileName">No file selected</span>
