@@ -193,11 +193,19 @@ function meltingTemperature(sequence) {
   return `${tm.toFixed(2)}°C`; // Return Tm rounded to two decimal places
 }
 
-function annealingTemperature(sequence, primer) {
-  if (!validateDNA(sequence) || !validateDNA(primer)) return "Invalid DNA sequence or primer.";
-  const freq = countNucleotideFrequency(primer);
-  return 64.9 + 41 * (freq.G + freq.C - 16.4) / primer.length + "°C";
+function annealingTemperature(sequence) {
+  if (!validateDNA(sequence)) return "Invalid DNA sequence.";
+
+  const freq = countNucleotideFrequency(sequence);
+  const length = sequence.length;
+
+  const tm = length < 14
+    ? 2 * (freq.A + freq.T) + 4 * (freq.G + freq.C) // Short sequences (<14 nt)
+    : 64.9 + 41 * ((freq.G + freq.C - 16.4) / length); // Long sequences (≥14 nt)
+
+  return `${tm.toFixed(2)}°C`;
 }
+
 
 function analyzeAll(sequence) {
 if (!validateDNA(sequence)) return "Invalid DNA sequence.";
@@ -277,12 +285,7 @@ function performAnalysis() {
       result = meltingTemperature(sequence);
       break;
     case "annealingTemp":
-      const primer = prompt("Enter primer sequence:");
-      if (!validateDNA(primer)) {
-        result = "Invalid primer sequence.";
-      } else {
-        result = annealingTemperature(sequence, primer);
-      }
+      result = annealingTemperature(sequence)
       break;
     case "analyzeAll":
       const allResults = analyzeAll(sequence);
