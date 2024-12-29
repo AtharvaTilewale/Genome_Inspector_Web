@@ -30,8 +30,10 @@ function readFastaFile() {
     if (sequence) {
       document.getElementById("dnaSequence").value = sequence;
       outputDiv.textContent = "FASTA file read successfully. Sequence loaded!";
+      outputDiv.className = "sequenceOutputSuccess"
     } else {
       outputDiv.textContent = "Invalid FASTA file or no sequence found. Please ensure you upload a valid genomic FASTA file.";
+      outputDiv.className = "sequenceOutputError"
     }
   };
 
