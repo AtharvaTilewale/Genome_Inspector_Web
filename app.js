@@ -172,10 +172,25 @@ function gcContent(sequence) {
 }
 
 function meltingTemperature(sequence) {
+  // Validate DNA sequence
   if (!validateDNA(sequence)) return "Invalid DNA sequence.";
+
+  // Count nucleotide frequencies
   const freq = countNucleotideFrequency(sequence);
-  const tm = 2 * (freq.A + freq.T) + 4 * (freq.G + freq.C);
-  return `${tm}°C`;
+  const length = sequence.length;
+
+  let tm;
+
+  // Short sequences (<14 nucleotides)
+  if (length < 14) {
+    tm = 2 * (freq.A + freq.T) + 4 * (freq.G + freq.C);
+  } 
+  // Long sequences (≥14 nucleotides)
+  else {
+    tm = 64.9 + 41 * ((freq.G + freq.C - 16.4) / length);
+  }
+
+  return `${tm.toFixed(2)}°C`; // Return Tm rounded to two decimal places
 }
 
 function annealingTemperature(sequence, primer) {
