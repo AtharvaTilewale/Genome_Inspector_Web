@@ -250,6 +250,7 @@ function performAnalysis() {
     displayResult("Please enter a valid DNA sequence!");
     return;
   }
+  
   const saveButton = document.getElementById("saveButton");
   saveButton.style.display = "block";
   let result = "";
