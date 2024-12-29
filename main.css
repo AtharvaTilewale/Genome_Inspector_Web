@@ -119,6 +119,17 @@ body {
     color: #ce1515
   }
 
+  .button-container {
+    display: flex;
+    justify-content: flex-start; /* Aligns buttons to the left */
+    gap: 10px; /* Adds space between the buttons */
+    width: 100%; 
+  }
+  
+  #resultButton, #saveButton {
+    display: inline-block; /* Ensures the buttons stay inline */
+  }
+
   /* For modern browsers */
 .result::-webkit-scrollbar {
   width: 10px; /* Width of the scrollbar */
@@ -200,4 +211,11 @@ body {
   .icon-button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+  }
+
+  #saveButton {
+    display: none;
+    right: 5%;
+    position: absolute;
+    font-size: 13px;
   }

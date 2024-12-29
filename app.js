@@ -250,7 +250,8 @@ function performAnalysis() {
     displayResult("Please enter a valid DNA sequence!");
     return;
   }
-
+  const saveButton = document.getElementById("saveButton");
+  saveButton.style.display = "block";
   let result = "";
 
   switch (analysisType) {
@@ -303,18 +304,18 @@ function performAnalysis() {
 function formatSequence(sequence, lineLength = 80) {
   return sequence.match(new RegExp(`.{1,${lineLength}}`, 'g')).join('\n');
 }
-function displayResult(content) {
-  const resultElement = document.getElementById("result");
-  const saveButton = document.getElementById("saveButton");
+// function displayResult(content) {
+//   const resultElement = document.getElementById("result");
+//   const saveButton = document.getElementById("saveButton");
 
-  if (content.trim()) {
-    resultElement.textContent = content; // Display the result
-    saveButton.style.display = "inline-block"; // Show the save button
-  } else {
-    resultElement.textContent = ""; // Clear the result
-    saveButton.style.display = "none"; // Hide the save button
-  }
-}
+//   if (content.trim()) {
+//     resultElement.textContent = content;  // Display the result
+//     saveButton.style.display = "inline-block";  // Show the save button
+//   } else {
+//     resultElement.textContent = "";  // Clear the result
+//     saveButton.style.display = "none";  // Hide the save button
+//   }
+// }
 
 function saveResultToFile() {
   const resultElement = document.getElementById("result");
