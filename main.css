@@ -209,8 +209,15 @@ body {
     box-shadow: inset 0px 0px 5px 0px rgb(255 255 255 / 30%);
     border-radius: 10px;
     padding-top: 10px;
+    text-transform: uppercase;
     font-family: monospace;
   }
+
+  textarea::placeholder {
+    color: rgba(255, 255, 255, 0.87); /* Change to your desired color */
+    font-style: italic; 
+  }
+
   select {
     width: 100%;
     padding: 10px;
