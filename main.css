@@ -219,8 +219,8 @@ body {
     display: inline-block;
     margin-top: 10px;
     padding: 10px;
-    background-color: #007bff;
-    color: white;
+    /* background-color: #007bff; */
+    /* color: white; */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -230,7 +230,7 @@ body {
   }
   
   .icon-button:hover {
-    background-color: #0056b3;
+    /* background-color: #0056b3; */
   }
   
   .icon-button:disabled {
@@ -240,7 +240,7 @@ body {
 
   #saveButton {
     display: none;
-    right: 5%;
+    right: 4%;
     position: absolute;
     font-size: 13px;
   }
