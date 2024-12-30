@@ -231,6 +231,8 @@ return results;
 }
 
 function performAnalysis() {
+  const showResult = document.getElementById("result");
+  showResult.style.display = "block";
   const sequence = document.getElementById("dnaSequence").value.trim();
   const analysisType = document.getElementById("analysisType").value;
 

@@ -176,7 +176,7 @@ body {
     backdrop-filter: blur(5px);
     overflow-y: auto;
     max-height: 300px;
-    font-size: 14px;
+    font-size: 13px;
     scrollbar-width: thin;
     scrollbar-color: white rgba(0, 0, 0, 0.1);
   }
