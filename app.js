@@ -245,11 +245,13 @@ function performAnalysis() {
   // Validate the sequence for invalid characters
   if (!validateDNA(sequence)) {
     document.getElementById("result").textContent = "Invalid character entered.";
+    document.getElementById("result").style.color = "#ce1515";
     return;
   }
 
   if (!dnaSequence) {
     displayResult("Please enter a valid DNA sequence!");
+    displayResult.style.color="#ce1515"
     return;
   }
   
@@ -302,6 +304,7 @@ function performAnalysis() {
   }
 
   document.getElementById("result").textContent = result;
+  document.getElementById("result").style.color = "#263e89";
 }
 
 function formatSequence(sequence, lineLength = 80) {

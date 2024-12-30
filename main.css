@@ -172,6 +172,7 @@ body {
     background-color: rgb(255 255 255 / 26%);
     border-radius: 7px;
     border: 1px solid #fff;
+    color: #263e89;
     white-space: pre-wrap;
     word-wrap: break-word;
     backdrop-filter: blur(5px);
@@ -253,3 +254,14 @@ body {
     position: absolute;
     font-size: 13px;
   }
+  
+  ::selection {
+    background-color: rgb(54 143 182);
+    color: white;
+}
+
+/* For Firefox compatibility */
+::-moz-selection {
+  background-color: rgb(54 143 182);
+  color: white;
+}
