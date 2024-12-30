@@ -72,6 +72,24 @@ body {
   label {
     font-weight: bold;
   }
+
+  select {
+    width: 100%;
+    padding: 10px;
+    color: #263e89;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background: #ffffff29;
+    border-radius: 10px;
+    backdrop-filter: blur(1px);
+    border: 1px solid white;
+    box-shadow: 0px 0px 1px 0px white;
+  }
+
+  select:hover {
+    box-shadow: 0px 0px 3px 0px white;
+  }
+
   .container {
     max-width: 600px;
     margin: 0 auto;
@@ -88,17 +106,17 @@ body {
   }
 
   #uploadButton {
-    background: white;
+    /* background: white; */
     border-radius: 7px;
-    padding: 4px;
+    padding: 7px;
     padding-right: 10px;
     padding-left: 10px;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
   }
 
   #uploadButton:hover {
     cursor: pointer;
-    background-color: #f0f0ff;
+    /* background-color: #f0f0ff; */
   }
 
 
@@ -150,30 +168,36 @@ body {
   .result {
     margin-top: 20px;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 5px;
-    border: 1px solid #ccc; /* Optional for clarity */
-    white-space: pre-wrap; /* Ensures spaces and line breaks are preserved */
-    word-wrap: break-word; /* Forces long words to break onto the next line */
-    overflow-y: auto; /* Adds vertical scrollbar if content overflows */
-    max-height: 300px; /* Limits the height of the result box */
-    font-size: 14px; /* Ensures readability */
-    scrollbar-width: thin; /* Makes the scrollbar thinner */
-    scrollbar-color: white rgba(0, 0, 0, 0.1); /* Thumb and track colors */
+    background-color: rgb(255 255 255 / 26%);
+    border-radius: 7px;
+    border: 1px solid #fff;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    backdrop-filter: blur(5px);
+    overflow-y: auto;
+    max-height: 300px;
+    font-size: 14px;
+    scrollbar-width: thin;
+    scrollbar-color: white rgba(0, 0, 0, 0.1);
   }
   .btn {
     display: inline-block;
     margin: 10px 0;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: #ffffff4f;
+    color: #3169a1;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: 0px 0px 3px 0px #2661c6;
+    backdrop-filter: blur(5px);
   }
+
   .btn:hover {
-    background-color: #0056b3;
+    /* border: 1px solid #2661c6; */
+    box-shadow: 0px 0px 5px 0px #2661c6;
   }
+
   textarea {
     width: 100%;
     height: 100px;
