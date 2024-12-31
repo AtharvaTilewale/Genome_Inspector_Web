@@ -9,6 +9,25 @@ body {
   color: #263e89
 }
 
+.man_btn {
+  right: 16px;
+  position: absolute;
+  top: 41px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.front, .back {
+  transition: transform 0.6s;
+}
+
+
+.back {
+  transform: rotateY(180deg);
+}
+
 h1 {
   text-align: center;
   color: #333;
@@ -45,6 +64,16 @@ select:hover {
   backdrop-filter: blur(9.0px);
   border: 1px solid #ffffff90;
   max-height: 95%;
+  transition: transform 1s;
+  perspective: 1000px;
+}
+
+.container.flipped {
+  transform: rotateY(180deg);
+}
+
+.container.flipped .back {
+  transform: rotateY(0deg);
 }
 
 input#fastaFile {

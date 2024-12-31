@@ -21,6 +21,7 @@
 
   <!-- JavaScript Files -->
   <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/flip_card.js" defer></script>
   <script src="assets/js/read_fasta.js" defer></script>
   <script src="assets/js/save_results.js" defer></script>
 
@@ -51,40 +52,50 @@
   <section>
     <div class="ball1"></div>
     <div class="ball2"></div>
-
     <div class="container">
-      <h1 style="color: #323485;">Genome Inspector</h1>
+      <div class="front" id="front">
+        <div>
+          <h1 style="color: #323485;">Genome Inspector</h1>
+          <button class="man_btn" id="man" style="display: none;" onclick="flip()">Manual</button>
+        </div>
 
-      <label for="dnaSequence">Enter/Upload DNA Sequence:</label>
-      <textarea id="dnaSequence" placeholder=" e.g., ATGCGTACGTAGCTAGCTAGCGT"></textarea>
-      <input type="file" style="display:none" id="fastaFile" accept=".fasta" onchange="readFastaFile()" />
-      <button id="uploadButton" class="btn" onclick="document.getElementById('fastaFile').click()">Upload FASTA
-        file
-      </button>
-      <span id="fileName">No file selected</span>
-      <div id="sequenceOutput"></div>
-      <br>
-      <label for="analysisType">Select Analysis:</label>
-      <select id="analysisType">
-        <option value="analyzeAll">Analyze All</option>
-        <option value="transcribe">Transcribe DNA</option>
-        <option value="complement">DNA Complement</option>
-        <option value="reverseComplement">Reverse Complement</option>
-        <option value="translate">Translate to Amino Acids</option>
-        <option value="translateReadingFrame">Translate Reading Frame</option>
-        <option value="restrictionSites">Find Restriction Sites</option>
-        <option value="orf">Find Open Reading Frames</option>
-        <option value="gcContent">GC Content</option>
-        <option value="nucleotideFreq">Nucleotide Frequency</option>
-        <option value="meltingTemp">Melting Temperature</option>
-        <option value="annealingTemp">Annealing Temperature</option>
-      </select>
-      <div class="button-container">
-        <button class="btn" onclick="performAnalysis()">Analyze</button>
-        <button id="saveButton" class="icon-button btn" onclick="saveResultToFile()"><i class="fa fa-download"></i> Save
+        <label for="dnaSequence">Enter/Upload DNA Sequence:</label>
+        <textarea id="dnaSequence" placeholder=" e.g., ATGCGTACGTAGCTAGCTAGCGT"></textarea>
+        <input type="file" style="display:none" id="fastaFile" accept=".fasta" onchange="readFastaFile()" />
+        <button id="uploadButton" class="btn" onclick="document.getElementById('fastaFile').click()">Upload FASTA
+          file
         </button>
+        <span id="fileName">No file selected</span>
+        <div id="sequenceOutput"></div>
+        <br>
+        <label for="analysisType">Select Analysis:</label>
+        <select id="analysisType">
+          <option value="analyzeAll">Analyze All</option>
+          <option value="transcribe">Transcribe DNA</option>
+          <option value="complement">DNA Complement</option>
+          <option value="reverseComplement">Reverse Complement</option>
+          <option value="translate">Translate to Amino Acids</option>
+          <option value="translateReadingFrame">Translate Reading Frame</option>
+          <option value="restrictionSites">Find Restriction Sites</option>
+          <option value="orf">Find Open Reading Frames</option>
+          <option value="gcContent">GC Content</option>
+          <option value="nucleotideFreq">Nucleotide Frequency</option>
+          <option value="meltingTemp">Melting Temperature</option>
+          <option value="annealingTemp">Annealing Temperature</option>
+        </select>
+        <div class="button-container">
+          <button class="btn" onclick="performAnalysis()">Analyze</button>
+          <button id="saveButton" class="icon-button btn" onclick="saveResultToFile()"><i class="fa fa-download"></i>
+            Save
+          </button>
+        </div>
+        <div class="result" id="result" style="display: none;"></div>
       </div>
-      <div class="result" id="result" style="display: none;"></div>
+      <div class="back">
+        <div class="container-back">
+          <button class="man_btn" id="close" style="display: none;">Close</button>
+        </div>
+      </div>
     </div>
   </section>
 </body>
