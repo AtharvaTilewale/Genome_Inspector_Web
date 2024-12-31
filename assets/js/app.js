@@ -142,15 +142,15 @@ results["Reverse Complement"] = reverseComplement(sequence);
 results["Translation (Amino Acids)"] = dnaToAminoAcid(sequence);
 results["GC Content"] = gcContent(sequence);
 results["Melting Temperature"] = meltingTemperature(sequence);
-results["Nucleotide Frequency"] = countNucleotideFrequency(sequence);
+// results["Nucleotide Frequency"] = countNucleotideFrequency(sequence);
 
-const restrictionSites = findRestrictionSites(sequence);
-results["Restriction Sites"] = Object.entries(restrictionSites)
-  .map(([enzyme, count]) => `${enzyme}: ${count}`)
-  .join(", ");
+// const restrictionSites = findRestrictionSites(sequence);
+// results["Restriction Sites"] = Object.entries(restrictionSites)
+//   .map(([enzyme, count]) => `${enzyme}: ${count}`)
+//   .join(", ");
 
-const orfs = findORF(sequence);
-results["Open Reading Frames (ORFs)"] = orfs.length > 0 ? orfs.join("\n") : "None found";
+// const orfs = findORF(sequence);
+// results["Open Reading Frames (ORFs)"] = orfs.length > 0 ? orfs.join("\n") : "None found";
 
 return results;
 }
