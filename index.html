@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Genome Inspector Web v1.0: Perform DNA sequence analysis, transcription, translation, GC content calculation, restriction site identification, and more.">
-    <meta name="keywords" content="DNA analysis, genome inspector, genome analysis, melting temperature calculation, annealing temperature calculation, ORF finder, genome calculator, DNA calculator, transcription, translation, GC content, restriction sites, open reading frames, bioinformatics tools">
-    <meta name="author" content="Atharva Tilewale">
-    <meta name="robots" content="index, follow">
-    
-    <title>Genome Inspector Web v1.0</title>
-  
-    <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/others.css">
-    <link rel="stylesheet" href="assets/css/balls.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-    <!-- JavaScript Files -->
-    <script src="assets/js/app.js" defer></script>
-    <script src="assets/js/read_fasta.js" defer></script>
-    <script src="assets/js/save_results.js" defer></script>
-  
-    <!-- Open Graph for Social Sharing -->
-    <meta property="og:title" content="Genome Inspector Web v1.0">
-    <meta property="og:description" content="Explore advanced DNA sequence analysis with Genome Inspector Web v1.0.">
-    <meta property="og:image" content="path/to/your/image.jpg">
-    <meta property="og:url" content="https://atharvatilewale.github.io/Genome_Inspector_Web/">
-    <meta property="og:type" content="website">
-  
-    <!-- Structured Data -->
-    <script type="application/ld+json">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Genome Inspector Web v1.0: Perform DNA sequence analysis, transcription, translation, GC content calculation, restriction site identification, and more.">
+  <meta name="keywords"
+    content="DNA analysis, genome inspector, genome analysis, melting temperature calculation, annealing temperature calculation, ORF finder, genome calculator, DNA calculator, transcription, translation, GC content, restriction sites, open reading frames, bioinformatics tools">
+  <meta name="author" content="Atharva Tilewale">
+  <meta name="robots" content="index, follow">
+
+  <title>Genome Inspector Web v1.0</title>
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/others.css">
+  <link rel="stylesheet" href="assets/css/balls.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- JavaScript Files -->
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/read_fasta.js" defer></script>
+  <script src="assets/js/save_results.js" defer></script>
+
+  <!-- Open Graph for Social Sharing -->
+  <meta property="og:title" content="Genome Inspector Web v1.0">
+  <meta property="og:description" content="Explore advanced DNA sequence analysis with Genome Inspector Web v1.0.">
+  <meta property="og:image" content="path/to/your/image.jpg">
+  <meta property="og:url" content="https://atharvatilewale.github.io/Genome_Inspector_Web/">
+  <meta property="og:type" content="website">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
@@ -42,43 +45,48 @@
         "url": "https://atharvatilewale.github.io/Genome_Inspector_Web/"
     }
     </script>
-  </head>
+</head>
+
 <body>
   <section>
     <div class="ball1"></div>
     <div class="ball2"></div>
-  
-  <div class="container">
-    <h1 style="color: #323485;">Genome Inspector</h1>
-    
-    <label for="dnaSequence">Enter/Upload DNA Sequence:</label>
-    <textarea id="dnaSequence" placeholder=" e.g., ATGCGTACGTAGCTAGCTAGCGT"></textarea>
-    <input type="file" style="display:none" id="fastaFile" accept=".fasta" onchange="readFastaFile()" />
-    <button id="uploadButton" class="btn" onclick="document.getElementById('fastaFile').click()">Upload FASTA file</button>
-    <span id="fileName">No file selected</span>
-    <div id="sequenceOutput"></div>
-    <br>
-    <label for="analysisType">Select Analysis:</label>
-    <select id="analysisType">
-      <option value="analyzeAll">Analyze All</option>
-      <option value="transcribe">Transcribe DNA</option>
-      <option value="complement">DNA Complement</option>
-      <option value="reverseComplement">Reverse Complement</option>
-      <option value="translate">Translate to Amino Acids</option>
-      <option value="translateReadingFrame">Translate Reading Frame</option>
-      <option value="restrictionSites">Find Restriction Sites</option>
-      <option value="orf">Find Open Reading Frames</option>
-      <option value="gcContent">GC Content</option>
-      <option value="nucleotideFreq">Nucleotide Frequency</option>
-      <option value="meltingTemp">Melting Temperature</option>
-      <option value="annealingTemp">Annealing Temperature</option>
-    </select>
-    <div class="button-container">
-      <button class="btn" onclick="performAnalysis()">Analyze</button>
-      <button id="saveButton" class="icon-button btn" onclick="saveResultToFile()"><i class="fa fa-download"></i>   Save </button>
+
+    <div class="container">
+      <h1 style="color: #323485;">Genome Inspector</h1>
+
+      <label for="dnaSequence">Enter/Upload DNA Sequence:</label>
+      <textarea id="dnaSequence" placeholder=" e.g., ATGCGTACGTAGCTAGCTAGCGT"></textarea>
+      <input type="file" style="display:none" id="fastaFile" accept=".fasta" onchange="readFastaFile()" />
+      <button id="uploadButton" class="btn" onclick="document.getElementById('fastaFile').click()">Upload FASTA
+        file
+      </button>
+      <span id="fileName">No file selected</span>
+      <div id="sequenceOutput"></div>
+      <br>
+      <label for="analysisType">Select Analysis:</label>
+      <select id="analysisType">
+        <option value="analyzeAll">Analyze All</option>
+        <option value="transcribe">Transcribe DNA</option>
+        <option value="complement">DNA Complement</option>
+        <option value="reverseComplement">Reverse Complement</option>
+        <option value="translate">Translate to Amino Acids</option>
+        <option value="translateReadingFrame">Translate Reading Frame</option>
+        <option value="restrictionSites">Find Restriction Sites</option>
+        <option value="orf">Find Open Reading Frames</option>
+        <option value="gcContent">GC Content</option>
+        <option value="nucleotideFreq">Nucleotide Frequency</option>
+        <option value="meltingTemp">Melting Temperature</option>
+        <option value="annealingTemp">Annealing Temperature</option>
+      </select>
+      <div class="button-container">
+        <button class="btn" onclick="performAnalysis()">Analyze</button>
+        <button id="saveButton" class="icon-button btn" onclick="saveResultToFile()"><i class="fa fa-download"></i> Save
+        </button>
+      </div>
+      <div class="result" id="result" style="display: none;"></div>
     </div>
-    <div class="result" id="result" style="display: none;"></div>
   </section>
-  </div>
 </body>
+
 </html>
