@@ -149,10 +149,17 @@ input#fastaFile {
   /* Rounded corners for the track */
 }
 
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-y: auto;
+  font-family: system-ui;
+}
+
 .result {
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 10px;
-  background-color: rgb(255 255 255 / 26%);
+  background-color: rgb(255 255 255 / 25%);
   border-radius: 7px;
   border: 1px solid #fff;
   color: #263e89;
@@ -165,6 +172,7 @@ input#fastaFile {
   scrollbar-width: thin;
   scrollbar-color: white rgba(0, 0, 0, 0.1);
 }
+
 
 .btn {
   display: inline-block;

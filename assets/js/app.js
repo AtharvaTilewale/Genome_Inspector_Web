@@ -1,6 +1,10 @@
 function validateDNA(sequence) {
-  return /^[ACGTacgt]+$/.test(sequence);
+  // Remove spaces and newlines before validation
+  const cleanedSequence = sequence.replace(/[\s\n]/g, '');
+  // Validate that only valid DNA characters remain
+  return /^[ACGTacgt]+$/.test(cleanedSequence);
 }
+
 
 function transcribeDNA(sequence) {
   if (!validateDNA(sequence)) return "Invalid DNA sequence.";
@@ -158,30 +162,29 @@ return results;
 function performAnalysis() {
   const showResult = document.getElementById("result");
   showResult.style.display = "block";
-  const sequence = document.getElementById("dnaSequence").value.trim();
+  let sequence = document.getElementById("dnaSequence").value.trim();
   const analysisType = document.getElementById("analysisType").value;
 
-  // Check if the input sequence is empty
-  if (!sequence) {
-    document.getElementById("result").textContent = "No sequence entered.";
+  try {
+    // Remove spaces and newlines for processing
+    sequence = sequence.replace(/[\s\n]/g, '');
+
+    // Check if the input sequence is empty after cleaning
+    if (!sequence) {
+      throw new Error("No sequence entered. Please provide a DNA sequence.");
+    }
+
+    // Validate the cleaned sequence
+    if (!validateDNA(sequence)) {
+      throw new Error("Invalid character detected in the sequence. Allowed characters are A, T, G, and C only.");
+    }
+  } catch (error) {
+    document.getElementById("result").textContent = error.message;
+    document.getElementById("result").style.color = "#ce1515"; // Set error text color
+    saveButton.style.display = "none"; // Hide save button
     return;
   }
 
-  // Validate the sequence for invalid characters
-  if (!validateDNA(sequence)) {
-    document.getElementById("result").textContent = "Invalid character entered. Allowed characters are A/T/G/C";
-    document.getElementById("result").style.color = "#ce1515";
-    return;
-  }
-
-  if (!dnaSequence) {
-    displayResult("Please enter a valid DNA sequence!");
-    displayResult.style.color="#ce1515"
-    return;
-  }
-  
-  const saveButton = document.getElementById("saveButton");
-  saveButton.style.display = "block";
   let result = "";
 
   switch (analysisType) {
@@ -216,20 +219,29 @@ function performAnalysis() {
       result = meltingTemperature(sequence);
       break;
     case "annealingTemp":
-      result = annealingTemperature(sequence)
+      result = annealingTemperature(sequence);
       break;
     case "analyzeAll":
       const allResults = analyzeAll(sequence);
       result = Object.entries(allResults)
         .map(([key, value]) => `${key}:\n${value}`)
-        .join("\n\n");
+        .join("\n\n"); // Use line breaks for each result
       break;
     default:
       result = "Invalid analysis type selected.";
   }
 
-  document.getElementById("result").textContent = result;
+  // Display the result with proper formatting
+  document.getElementById("result").innerHTML = `<pre>${result}</pre>`;
   document.getElementById("result").style.color = "#263e89";
+  // Show the save button and set its click event
+  saveButton.style.display = "inline-block"; // Make save button visible
+  saveButton.onclick = () => saveResultToFile(result);
+  // Save result for file download if required
+  // const saveButton = document.getElementById("saveButton");
+  // if (saveButton) {
+  //   saveButton.onclick = () => saveResultToFile(result);
+  // }
 }
 
 function formatSequence(sequence, lineLength = 80) {
@@ -239,12 +251,4 @@ function formatSequence(sequence, lineLength = 80) {
 //   const resultElement = document.getElementById("result");
 //   const saveButton = document.getElementById("saveButton");
 
-//   if (content.trim()) {
-//     resultElement.textContent = content;  // Display the result
-//     saveButton.style.display = "inline-block";  // Show the save button
-//   } else {
-//     resultElement.textContent = "";  // Clear the result
-//     saveButton.style.display = "none";  // Hide the save button
-//   }
-// }
 
