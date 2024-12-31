@@ -19,10 +19,10 @@
 
 ---
 
-## Live Demo
+## Try Genome Inspector Web
 
 You can try **Genome Inspector Web v1.0** live at:  
-[**Live Demo Link**](https://atharvatilewale.github.io/Genome_Inspector_Web)
+[**Genome Inspector Web**](https://atharvatilewale.github.io/Genome_Inspector_Web)
 
 ---
 
@@ -45,7 +45,7 @@ You can try **Genome Inspector Web v1.0** live at:
    - **Complement**
    - **Reverse Complement**
    - **Translate to Amino Acids**
-   - **Restriction Sites**, etc.
+   - **Melting Temperature**, etc.
 
 2. Click the **Analyze** button to perform the selected analysis on the DNA sequence.
 
@@ -87,7 +87,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Author
 
 **Atharva Tilewale**  
-Bioinformatics Enthusiast | Developer | Researcher
+Computational Biologist | Bioinformatician | Developer | Researcher
 
 For any inquiries, you can reach me at:   
 [GitHub](https://github.com/AtharvaTilewale)  
