@@ -1,6 +1,6 @@
 # Genome Inspector Web v1.0
 
-**Genome Inspector Web** is an interactive tool for DNA sequence analysis. With this web application, you can perform various DNA sequence operations such as transcription, translation, restriction site identification, GC content analysis, and much more. Designed for both researchers and bioinformatics enthusiasts, **Genome Inspector** simplifies complex tasks into an easy-to-use interface.
+**Genome Inspector Web** is an interactive tool for DNA sequence analysis. With this web application, you can perform various DNA sequence operations such as transcription, translation, reverse complement, GC content analysis, melting temperature calculation and much more. Designed for both researchers and bioinformatics enthusiasts, **Genome Inspector** simplifies complex tasks into an easy-to-use interface.
 
 ---
 
@@ -10,8 +10,8 @@
 - **DNA Complement**: Generate the complementary DNA sequence.
 - **Reverse Complement**: Obtain the reverse complement of the DNA sequence.
 - **Translation to Amino Acids**: Translate DNA sequences into protein sequences.
-- **Open Reading Frame (ORF) Finder**: Identify potential coding sequences.
-- **Restriction Sites Identification**: Locate restriction enzyme recognition sites.
+<!-- - **Open Reading Frame (ORF) Finder**: Identify potential coding sequences. -->
+<!-- - **Restriction Sites Identification**: Locate restriction enzyme recognition sites. -->
 - **GC Content Calculation**: Calculate the percentage of GC content in the DNA sequence.
 - **Nucleotide Frequency Analysis**: Determine the frequency of each nucleotide in a sequence.
 - **Melting and Annealing Temperature**: Compute the melting and annealing temperatures for primers.
@@ -89,10 +89,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Atharva Tilewale**  
 Bioinformatics Enthusiast | Developer | Researcher
 
-For any inquiries, you can reach me at:  
-[Your Email Address]  
-[Your GitHub Profile](https://github.com/AtharvaTilewale)  
-[LinkedIn Profile](https://www.linkedin.com/in/atharvatilewale)
+For any inquiries, you can reach me at:   
+[GitHub](https://github.com/AtharvaTilewale)  
+[LinkedIn](https://www.linkedin.com/in/atharvatilewale)
 
 ---
 
