@@ -1,0 +1,10 @@
+::selection {
+    background-color: rgb(54 143 182);
+    color: white;
+}
+
+/* For Firefox compatibility */
+::-moz-selection {
+    background-color: rgb(54 143 182);
+    color: white;
+}

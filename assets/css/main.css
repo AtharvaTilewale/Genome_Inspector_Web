@@ -1,267 +1,208 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #99bdf7;
-    background-image: url(bgimage.png);
-    background-attachment: fixed;
-    background-size: auto;
-    background-position: center center;
-    color: #263e89
-  }
-  .ball1 {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-color: #ff005fbd;
-    box-shadow: inset 10px 10px 50px 0px #0000006e;
-    z-index: -99;
-    position: fixed;
-    top: -20%;
-    left: 10%;
-    padding: 50px;
-    margin: 10%;
- }
- 
- .ball2 {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background-color: #ff005fbd;
-    box-shadow: inset 10px 10px 50px 0px #0000006e;
-    z-index: -99;
-    position: fixed;
-    bottom: -20%;
-    right: 7%;
-    padding: 50px;
-    margin: 10%;
- }
-  .glowing-sphere {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, 
-      rgba(255, 0, 0, 0.6), 
-      rgba(255, 154, 0, 0.5) 20%, 
-      rgba(208, 222, 33, 0.4) 40%, 
-      rgba(79, 220, 74, 0.4) 60%, 
-      rgba(63, 218, 216, 0.4) 70%, 
-      rgba(47, 201, 226, 0.5) 80%, 
-      rgba(28, 127, 238, 0.6) 90%, 
-      rgba(95, 21, 242, 0.7));
-    box-shadow: 0 0 60px 20px rgba(255, 255, 255, 0.2),
-                0 0 100px 50px rgba(255, 0, 0, 0.3),
-                0 0 150px 75px rgba(0, 0, 255, 0.2);
-  }
-.gradient-circle {
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, #ff7e5f, #feb47b);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-family: Arial, sans-serif;
-  color: #323485;
-  font-size: 1.5em;
+  margin: 20px;
+  background-color: #99bdf7;
+  background-image: url(bgimage.png);
+  background-attachment: fixed;
+  background-size: auto;
+  background-position: center center;
+  color: #263e89
 }
 
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-  label {
-    font-weight: bold;
-  }
+h1 {
+  text-align: center;
+  color: #333;
+}
 
-  select {
-    width: 100%;
-    padding: 10px;
-    color: #263e89;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    background: #ffffff29;
-    border-radius: 10px;
-    backdrop-filter: blur(1px);
-    border: 1px solid white;
-    box-shadow: 0px 0px 1px 0px white;
-  }
+label {
+  font-weight: bold;
+}
 
-  select:hover {
-    box-shadow: 0px 0px 3px 0px white;
-  }
+select {
+  width: 100%;
+  padding: 10px;
+  color: #263e89;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background: #ffffff29;
+  border-radius: 10px;
+  backdrop-filter: blur(1px);
+  border: 1px solid white;
+  box-shadow: 0px 0px 1px 0px white;
+}
 
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgb(220 218 240 / 30%);
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgb(62 91 232 / 47%);
-    backdrop-filter: blur(9.0px);
-    border: 1px solid #ffffff90;
-    max-height: 95%;
-  }
+select:hover {
+  box-shadow: 0px 0px 3px 0px white;
+}
 
-  input#fastaFile {
-    color: #393b80;
-  }
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgb(220 218 240 / 30%);
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgb(62 91 232 / 47%);
+  backdrop-filter: blur(9.0px);
+  border: 1px solid #ffffff90;
+  max-height: 95%;
+}
 
-  #uploadButton {
-    /* background: white; */
-    border-radius: 7px;
-    padding: 7px;
-    padding-right: 10px;
-    padding-left: 10px;
-    /* border: 1px solid blue; */
-  }
+input#fastaFile {
+  color: #393b80;
+}
 
-  #uploadButton:hover {
-    cursor: pointer;
-    /* background-color: #f0f0ff; */
-  }
+#uploadButton {
+  /* background: white; */
+  border-radius: 7px;
+  padding: 7px;
+  padding-right: 10px;
+  padding-left: 10px;
+  /* border: 1px solid blue; */
+}
 
+#uploadButton:hover {
+  cursor: pointer;
+  /* background-color: #f0f0ff; */
+}
 
-  #fileName {
-    font-size: 12px;
+#fileName {
+  font-size: 12px;
+}
 
-  }
+.sequenceOutputSuccess {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #2d7e1d
+}
 
-  .sequenceOutputSuccess {
-    margin-top: 10px;
-    font-size: 13px;
-    color: #2d7e1d
-  }
+.sequenceOutputError {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #ce1515
+}
 
-  .sequenceOutputError {
-    margin-top: 10px;
-    font-size: 13px;
-    color: #ce1515
-  }
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  /* Aligns buttons to the left */
+  gap: 10px;
+  /* Adds space between the buttons */
+  width: 100%;
+}
 
-  .button-container {
-    display: flex;
-    justify-content: flex-start; /* Aligns buttons to the left */
-    gap: 10px; /* Adds space between the buttons */
-    width: 100%; 
-  }
-  
-  #resultButton, #saveButton {
-    display: inline-block; /* Ensures the buttons stay inline */
-  }
+#resultButton,
+#saveButton {
+  display: inline-block;
+  /* Ensures the buttons stay inline */
+}
 
-  /* For modern browsers */
+/* For modern browsers */
 .result::-webkit-scrollbar {
-  width: 10px; /* Width of the scrollbar */
+  width: 10px;
+  /* Width of the scrollbar */
 }
 
 .result::-webkit-scrollbar-thumb {
-  background-color: white; /* Color of the scrollbar thumb */
-  border-radius: 5px; /* Rounded corners for the thumb */
-  border: 2px solid transparent; /* Optional: Adds space around the thumb */
-  background-clip: padding-box; /* Ensures the border doesn't overlap */
+  background-color: white;
+  /* Color of the scrollbar thumb */
+  border-radius: 5px;
+  /* Rounded corners for the thumb */
+  border: 2px solid transparent;
+  /* Optional: Adds space around the thumb */
+  background-clip: padding-box;
+  /* Ensures the border doesn't overlap */
 }
 
 .result::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.1); /* Color of the scrollbar track */
-  border-radius: 5px; /* Rounded corners for the track */
+  background-color: rgba(0, 0, 0, 0.1);
+  /* Color of the scrollbar track */
+  border-radius: 5px;
+  /* Rounded corners for the track */
 }
 
-  .result {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: rgb(255 255 255 / 26%);
-    border-radius: 7px;
-    border: 1px solid #fff;
-    color: #263e89;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    backdrop-filter: blur(5px);
-    overflow-y: auto;
-    max-height: 300px;
-    font-size: 13px;
-    scrollbar-width: thin;
-    scrollbar-color: white rgba(0, 0, 0, 0.1);
-  }
-  .btn {
-    display: inline-block;
-    margin: 10px 0;
-    padding: 10px 20px;
-    background-color: #ffffff4f;
-    color: #3169a1;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0px 0px 3px 0px #2661c6;
-    backdrop-filter: blur(5px);
-  }
-
-  .btn:hover {
-    /* border: 1px solid #2661c6; */
-    box-shadow: 0px 0px 5px 0px #2661c6;
-  }
-
-  textarea {
-    width: 100%;
-    height: 100px;
-    color: #263e89;
-    margin: 15px 0px 10px;
-    border: 1px solid #fff;
-    background-color: rgb(255 255 255 / 25%);
-    box-shadow: inset 0px 0px 5px 0px rgb(255 255 255 / 30%);
-    border-radius: 10px;
-    padding-top: 10px;
-    text-transform: uppercase;
-    font-family: monospace;
-  }
-
-  textarea::placeholder {
-    color: rgba(255, 255, 255, 0.87); /* Change to your desired color */
-    font-style: italic; 
-  }
-
-  select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-
-  .icon-button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px;
-    /* background-color: #007bff; */
-    /* color: white; */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    transition: background-color 0.3s;
-  }
-  
-  .icon-button:hover {
-    /* background-color: #0056b3; */
-  }
-  
-  .icon-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-  }
-
-  #saveButton {
-    display: none;
-    right: 4%;
-    position: absolute;
-    font-size: 13px;
-  }
-  
-  ::selection {
-    background-color: rgb(54 143 182);
-    color: white;
+.result {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgb(255 255 255 / 26%);
+  border-radius: 7px;
+  border: 1px solid #fff;
+  color: #263e89;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  backdrop-filter: blur(5px);
+  overflow-y: auto;
+  max-height: 300px;
+  font-size: 13px;
+  scrollbar-width: thin;
+  scrollbar-color: white rgba(0, 0, 0, 0.1);
 }
 
-/* For Firefox compatibility */
-::-moz-selection {
-  background-color: rgb(54 143 182);
-  color: white;
+.btn {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 10px 20px;
+  background-color: #ffffff4f;
+  color: #3169a1;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 0px 3px 0px #2661c6;
+  backdrop-filter: blur(5px);
+}
+
+.btn:hover {
+  /* border: 1px solid #2661c6; */
+  box-shadow: 0px 0px 5px 0px #2661c6;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  color: #263e89;
+  margin: 15px 0px 10px;
+  border: 1px solid #fff;
+  background-color: rgb(255 255 255 / 25%);
+  box-shadow: inset 0px 0px 5px 0px rgb(255 255 255 / 30%);
+  border-radius: 10px;
+  padding-top: 10px;
+  text-transform: uppercase;
+  font-family: monospace;
+}
+
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.87);
+  /* Change to your desired color */
+  font-style: italic;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.icon-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px;
+  /* background-color: #007bff; */
+  /* color: white; */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.icon-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+#saveButton {
+  display: none;
+  right: 4%;
+  position: absolute;
+  font-size: 13px;
 }

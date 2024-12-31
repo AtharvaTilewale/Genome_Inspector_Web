@@ -1,5 +1,3 @@
-
-
 function validateDNA(sequence) {
   return /^[ACGTacgt]+$/.test(sequence);
 }
