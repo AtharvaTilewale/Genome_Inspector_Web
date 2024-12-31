@@ -110,4 +110,4 @@ For any inquiries, you can reach me at:
 -->
 
 Feel free to explore the project and start analyzing your DNA sequences today with **Genome Inspector Web v1.0**!
-© 2024 Atharva Tilewale
+<br>© 2024 Atharva Tilewale
