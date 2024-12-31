@@ -169,7 +169,7 @@ function performAnalysis() {
 
   // Validate the sequence for invalid characters
   if (!validateDNA(sequence)) {
-    document.getElementById("result").textContent = "Invalid character entered.";
+    document.getElementById("result").textContent = "Invalid character entered. Allowed characters are A/T/G/C";
     document.getElementById("result").style.color = "#ce1515";
     return;
   }
