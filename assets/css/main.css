@@ -19,14 +19,14 @@ body {
   cursor: pointer;
 }
 
-.front, .back {
+/* .front, .back {
   transition: transform 0.6s;
 }
 
 
 .back {
   transform: rotateY(180deg);
-}
+} */
 
 h1 {
   text-align: center;
@@ -68,13 +68,13 @@ select:hover {
   perspective: 1000px;
 }
 
-.container.flipped {
+/* .container.flipped {
   transform: rotateY(180deg);
 }
 
 .container.flipped .back {
   transform: rotateY(0deg);
-}
+} */
 
 input#fastaFile {
   color: #393b80;
