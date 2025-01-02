@@ -2,7 +2,7 @@ function validateDNA(sequence) {
   // Remove spaces and newlines before validation
   const cleanedSequence = sequence.replace(/[\s\n]/g, '');
   // Validate that only valid DNA characters remain
-  return /^[ACGTacgt]+$/.test(cleanedSequence);
+  return /^[ACGTNacgtn]+$/.test(cleanedSequence);
 }
 
 
@@ -45,9 +45,29 @@ function dnaToAminoAcid(sequence) {
     GGT: "G", GGC: "G", GGA: "G", GGG: "G",
   };
 
+  // Function to find amino acid for codons with 'N'
+  const resolveCodonWithN = (codon) => {
+    const base1 = codon[0];
+    const base2 = codon[1];
+    const matchingCodons = Object.keys(codonTable).filter(
+      key => key[0] === base1 && key[1] === base2
+    );
+
+    const aminoAcids = new Set(matchingCodons.map(key => codonTable[key]));
+    return aminoAcids.size === 1 ? [...aminoAcids][0] : "?";
+  };
+
   if (!validateDNA(sequence)) return "Invalid DNA sequence.";
   const codons = sequence.toUpperCase().match(/.{1,3}/g) || [];
-  return codons.map(codon => codonTable[codon] || "?").join("");
+
+  return codons
+    .map(codon => {
+      if (codon.includes("N")) {
+        return resolveCodonWithN(codon); // Handle ambiguous codons
+      }
+      return codonTable[codon] || "?"; // Translate known codons
+    })
+    .join("");
 }
 
 function translateReadingFrame(sequence, frame = 1) {
