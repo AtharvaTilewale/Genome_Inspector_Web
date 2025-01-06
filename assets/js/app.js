@@ -196,7 +196,7 @@ function performAnalysis() {
 
     // Validate the cleaned sequence
     if (!validateDNA(sequence)) {
-      throw new Error("Invalid character detected in the sequence. Allowed characters are A, T, G, and C only.");
+      throw new Error("Invalid character detected in the sequence. Allowed characters are A, T, G, C, and N only.");
     }
   } catch (error) {
     document.getElementById("result").textContent = error.message;
