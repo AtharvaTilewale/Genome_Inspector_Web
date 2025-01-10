@@ -91,18 +91,72 @@ function findRestrictionSites(sequence) {
 
 function findORF(sequence) {
   if (!validateDNA(sequence)) return "Invalid DNA sequence.";
-  const startCodon = /ATG/gi;
-  const stopCodons = /TAA|TAG|TGA/gi;
-  const orfs = [];
-  sequence.replace(startCodon, (match, offset) => {
-    const rest = sequence.slice(offset);
-    const stopMatch = rest.match(stopCodons);
-    if (stopMatch) {
-      orfs.push(rest.slice(0, stopMatch.index + 3));
+
+  // Function to generate reading frames
+  const generateFrames = (seq) => {
+    const frames = [];
+    for (let frame = 0; frame < 3; frame++) {
+      frames.push(seq.slice(frame));
     }
-  });
-  return orfs;
+    return frames;
+  };
+
+  // Function to get reverse complement
+  const reverseComplement = (seq) => {
+    const complement = { A: "T", T: "A", C: "G", G: "C", N: "N" }; // N maps to N
+    return seq
+      .split("")
+      .reverse()
+      .map((nucleotide) => complement[nucleotide] || nucleotide) // Handle N
+      .join("");
+  };
+
+  // Function to translate nucleotide sequence to amino acids
+  const translateToAminoAcids = (seq) => {
+    const codonTable = {
+      "ATA": "I", "ATC": "I", "ATT": "I", "ATG": "M", "ACA": "T", "ACC": "T", "ACG": "T", "ACT": "T",
+      "AAC": "N", "AAT": "N", "AAA": "K", "AAG": "K", "AGC": "S", "AGT": "S", "AGA": "R", "AGG": "R",
+      "CTA": "L", "CTC": "L", "CTG": "L", "CTT": "L", "CCA": "P", "CCC": "P", "CCG": "P", "CCT": "P",
+      "CAC": "H", "CAT": "H", "CAA": "Q", "CAG": "Q", "CGA": "R", "CGC": "R", "CGG": "R", "CGT": "R",
+      "GTA": "V", "GTC": "V", "GTG": "V", "GTT": "V", "GCA": "A", "GCC": "A", "GCG": "A", "GCT": "A",
+      "GAC": "D", "GAT": "D", "GAA": "E", "GAG": "E", "GGA": "G", "GGC": "G", "GGG": "G", "GGT": "G",
+      "TCA": "S", "TCC": "S", "TCG": "S", "TCT": "S", "TTC": "F", "TTT": "F", "TTA": "L", "TTG": "L",
+      "TAC": "Y", "TAT": "Y", "TAA": "*", "TAG": "*", "TGA": "*", "TGC": "C", "TGT": "C", "TGG": "W"
+    };
+    
+    let protein = "";
+    // Process sequence in chunks of 3 nucleotides (codons)
+    for (let i = 0; i < seq.length - 2; i += 3) {
+      let codon = seq.substring(i, i + 3);
+      if (codonTable[codon]) {
+        protein += codonTable[codon];
+      } else if (codon.includes("N")) {
+        // If codon contains N, treat it as N (unknown amino acid)
+        protein += "N";
+      }
+    }
+    return protein;
+  };
+
+  // Forward frames
+  const forwardFrames = generateFrames(sequence).map(translateToAminoAcids);
+
+  // Reverse frames
+  const reverseSequence = reverseComplement(sequence);
+  const reverseFrames = generateFrames(reverseSequence).map(translateToAminoAcids);
+
+  // Combine and return all six frames
+  return {
+    forwardFrames,
+    reverseFrames,
+  };
 }
+
+// Helper function to validate DNA sequence
+function validateDNA(sequence) {
+  return /^[ATCGN]*$/i.test(sequence); // Allow N in the sequence
+}
+
 
 function countNucleotideFrequency(sequence) {
   if (!validateDNA(sequence)) return "Invalid DNA sequence.";
